@@ -1,22 +1,15 @@
 image: docker.diconium.com:443/diconium/hub/mirror/node:14.18.1
-stages:
-  - master
 
 # job that deploys gitlab pages
 pages:
-  stage: master
-  before_script:
-  
-  script:
-  - echo pages url = $CI_PAGES_URL
-  - npm install
-  - npm run build
-  - surge public who-owns-the-margins.surge.sh
-  artifacts:
-    paths:  
-    - public
-  rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+  pages:
+   stage: deploy
+   script:
+     - npm install
+     - npm run build
+   artifacts:
+     paths:
+       - public
+   only:
+     - master
  
