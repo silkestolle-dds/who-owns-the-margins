@@ -1,0 +1,27 @@
+image: docker.diconium.com:443/diconium/hub/mirror/node:13
+stages:
+  - master
+
+# job that deploys gitlab pages
+pages:
+  stage: master
+  before_script:
+  # generate npmrc during runtime and set github access token to be able to install packages from vwdfive.
+  - echo "//npm.pkg.github.com/:_authToken=$NPM_GITHUB_ACCESS_TOKEN_WLFE" >> .npmrc
+  - npm install
+  - echo build npm
+  script:
+  - echo pages url = $CI_PAGES_URL
+  # - rm -rf public
+  - pwd
+  - mkdir public
+  - npm run build
+  - echo 'build done'
+  artifacts:
+    paths:  
+    - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+
