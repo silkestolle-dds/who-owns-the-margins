@@ -7,12 +7,9 @@ pages:
   stage: master
   before_script:
   - npm install
-  - echo build npm
   script:
   - echo pages url = $CI_PAGES_URL
   - npm run build
-  - npm run start
-  - echo 'build done'
   artifacts:
     paths:  
     - public
