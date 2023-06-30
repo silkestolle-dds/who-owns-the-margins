@@ -2,7 +2,7 @@
 	export let name;
 	import Header from './Header.svelte';
 	import Footer from './Footer.svelte';
-	import Aside from './Aside.svelte';
+	import Aside2 from './Aside2.svelte';
 	import Teasers from './Teasers.svelte';
   import Newsletter from './Newsletter.svelte';
 	
@@ -26,7 +26,7 @@
 		</div>
 	</section>
 	<aside class="main__aside">
-		<Aside />
+		<Aside2 />
 	</aside>
 </main>
 <footer>
