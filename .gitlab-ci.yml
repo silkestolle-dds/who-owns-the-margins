@@ -11,6 +11,7 @@ pages:
   script:
   - echo pages url = $CI_PAGES_URL
   - npm run build
+  - npm run start
   - echo 'build done'
   artifacts:
     paths:  
