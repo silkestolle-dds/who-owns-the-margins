@@ -1,4 +1,4 @@
-image: docker.diconium.com:443/diconium/hub/mirror/node:16
+image: docker.diconium.com:443/diconium/hub/mirror/node:14.18.1
 stages:
   - master
 
