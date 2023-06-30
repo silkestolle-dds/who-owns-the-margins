@@ -2,14 +2,17 @@ image: docker.diconium.com:443/diconium/hub/mirror/node:14.18.1
 
 # job that deploys gitlab pages
 pages:
-  pages:
-   stage: deploy
-   script:
-     - npm install
-     - npm run build
-   artifacts:
-     paths:
-       - public
-   only:
-     - master
+  stage: deploy
+  before_script:
+  - npm install
+  script:
+  - echo pages url = $CI_PAGES_URL
+  - npm run build
+  artifacts:
+    paths:  
+    - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
  
