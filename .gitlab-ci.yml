@@ -10,6 +10,7 @@ pages:
   script:
   - echo pages url = $CI_PAGES_URL
   - npm run build
+  - surge public who-owns-the-margins.surge.sh
   artifacts:
     paths:  
     - public
