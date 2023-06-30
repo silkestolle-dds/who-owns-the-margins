@@ -6,9 +6,10 @@ stages:
 pages:
   stage: master
   before_script:
-  - npm install
+  
   script:
   - echo pages url = $CI_PAGES_URL
+  - npm install
   - npm run build
   - surge public who-owns-the-margins.surge.sh
   artifacts:
